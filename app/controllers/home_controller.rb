@@ -10,18 +10,7 @@ class HomeController < ApplicationController
   def recipes_for_ingredients
     render json: {
       input: params.permit!.to_h,
-      recipes: [
-        {
-          id: 1,
-          name: 'Recipe 1',
-          rating: 5.0
-        },
-        {
-          id: 2,
-          name: 'Recipe 2',
-          rating: 4.0
-        }
-      ]
+      recipes: Recipe.includes(:ingredients).order(ratings: :desc).limit(10).as_json(include: :ingredients)
     }
   end
 
