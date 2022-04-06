@@ -24,8 +24,13 @@ ActiveRecord::Schema.define(version: 2022_04_02_143112) do
   create_table "recipe_ingredient_assignments", force: :cascade do |t|
     t.bigint "recipe_id"
     t.bigint "ingredient_id"
+    t.integer "unit", null: false
+    t.float "quantity", null: false
+    t.string "original_row"
     t.index ["ingredient_id"], name: "index_recipe_ingredient_assignments_on_ingredient_id"
+    t.index ["quantity"], name: "index_recipe_ingredient_assignments_on_quantity"
     t.index ["recipe_id"], name: "index_recipe_ingredient_assignments_on_recipe_id"
+    t.index ["unit"], name: "index_recipe_ingredient_assignments_on_unit"
   end
 
   create_table "recipes", force: :cascade do |t|

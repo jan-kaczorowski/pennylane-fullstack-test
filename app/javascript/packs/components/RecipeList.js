@@ -11,6 +11,9 @@ const RecipeList = props => (
                       Recipe
                   </th>
                   <th scope="col" class="px-6 py-3">
+                      Relevance
+                  </th>
+                  <th scope="col" class="px-6 py-3">
                       Rating
                   </th>
               </tr>
@@ -25,6 +28,9 @@ const RecipeList = props => (
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                         {recipe.title}
                     </th>
+                    <td class="px-6 py-4">
+                      {recipe.relevance}
+                    </td>
                     <td class="px-6 py-4">
                       {recipe.ratings}
                     </td>

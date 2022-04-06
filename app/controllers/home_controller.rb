@@ -4,14 +4,11 @@ class HomeController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-
   end
 
   def recipes_for_ingredients
-    render json: {
-      input: params.permit!.to_h,
-      recipes: Recipe.includes(:ingredients).order(ratings: :desc).limit(10).as_json(include: :ingredients)
-    }
+    recipes = RecipesFetcher.call(params['ingredients'])
+    render json: { recipes: recipes }
   end
 
   def ingredients_list
