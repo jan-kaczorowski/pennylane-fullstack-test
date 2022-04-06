@@ -1,0 +1,18 @@
+dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+
+dt {
+  grid-column-start: 1;
+  font-weight: bold;
+}
+
+dd {
+  grid-column-start: 2;
+  padding-left: 1em;
+}
+
+img.recipe-image {
+  max-width: 50%;
+}
