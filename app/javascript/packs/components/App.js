@@ -4,7 +4,7 @@ import RecipeList from './RecipeList';
 import RecipeDetails from './RecipeDetails';
 
 export default function App(props) {
-  const [ingredients, setIngredients] = useState('water,sugar,egg')
+  const [ingredients, setIngredients] = useState('water,sugar,egg,garlic')
   const [recipes, setRecipes] = useState([])
   const [activeRecipe, setActiveRecipe] = useState(null)
 

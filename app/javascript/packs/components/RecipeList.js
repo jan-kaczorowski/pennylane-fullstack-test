@@ -29,7 +29,7 @@ const RecipeList = props => (
                         {recipe.title}
                     </th>
                     <td class="px-6 py-4">
-                      {recipe.relevance}
+                      {recipe.relevance}%
                     </td>
                     <td class="px-6 py-4">
                       {recipe.ratings}
