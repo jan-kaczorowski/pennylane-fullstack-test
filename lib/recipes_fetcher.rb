@@ -1,29 +1,32 @@
 # frozen_string_literal: true
 
 class RecipesFetcher
+  FIELDS = %i[
+    id title ratings relevance intersecting_ids searched_for_ids
+    cook_time prep_time cuisine author title image_url
+  ]
   def self.call(params)
     new(params).call
   end
 
   def initialize(params)
     @params = params
+    @ingredient_ids = []
   end
 
   def call
     find_ingredients_from_params
 
     Recipe.joins("INNER JOIN (#{results_sql}) AS results ON recipes.id = results.id")
-          .includes(:ingredients)
-          .select(:id, :title, :ratings, :relevance, :intersecting_ids, :searched_for_ids)
+          .includes(:recipe_ingredient_assignments, :ingredients)
+          .select(*FIELDS)
           .order(ratings: :desc)
-          .as_json(include: :ingredients)
+          .as_json(include: :recipe_ingredient_assignments)
   end
 
   private
 
   def find_ingredients_from_params
-    @ingredient_ids = []
-
     params.split(',').each do |ingr_string|
       ingr_string.strip!
       ingr = Ingredient.where("name ILIKE '%#{ingr_string}%'").first

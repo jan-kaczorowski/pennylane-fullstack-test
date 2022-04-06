@@ -4,7 +4,7 @@ import RecipeList from './RecipeList';
 import RecipeDetails from './RecipeDetails';
 
 export default function App(props) {
-  const [ingredients, setIngredients] = useState('')
+  const [ingredients, setIngredients] = useState('water,sugar,egg')
   const [recipes, setRecipes] = useState([])
   const [activeRecipe, setActiveRecipe] = useState(null)
 
@@ -32,7 +32,7 @@ export default function App(props) {
   }
 
   return (
-    <>
+    <div className="app-wrapper">
       <h2 class="text-5xl dark:text-white mb-6">Recipe finder</h2>
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
@@ -55,9 +55,10 @@ export default function App(props) {
           Find recipes containing these ingredients
       </button>
 
-      {recipes.length > 0 && <RecipeList recipes={recipes} rowClickHandler={(recipe) => setActiveRecipe(recipe)} />}
-
-      {activeRecipe && <RecipeDetails recipe={activeRecipe} />}
-  </>
+      <div class="grid grid-cols-2 gap-4">
+        {recipes.length > 0 && <RecipeList recipes={recipes} rowClickHandler={(recipe) => setActiveRecipe(recipe)} />}
+        {activeRecipe && <RecipeDetails recipe={activeRecipe} />}
+      </div>
+    </div>
   )
 }

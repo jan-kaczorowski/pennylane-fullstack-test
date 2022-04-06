@@ -10,10 +10,4 @@ class HomeController < ApplicationController
     recipes = RecipesFetcher.call(params['ingredients'])
     render json: { recipes: recipes }
   end
-
-  def ingredients_list
-    render json: Ingredient.select(:id,:name)
-                           .map(&:attributes)
-                           .as_json
-  end
 end

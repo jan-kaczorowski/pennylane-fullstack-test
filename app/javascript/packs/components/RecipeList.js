@@ -21,11 +21,11 @@ const RecipeList = props => (
           <tbody>
               {props.recipes.map(recipe => {
                 return (
-                  <tr key={recipe.id}
-                      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  <tr key={recipe.id} 
+                      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-600 hover:text-white"
                       onClick={() => props.rowClickHandler(recipe) }
                   >
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                    <th scope="row" class="font-medium px-6">
                         {recipe.title}
                     </th>
                     <td class="px-6 py-4">

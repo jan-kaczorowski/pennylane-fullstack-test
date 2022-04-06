@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const RecipeDetails = props => (
-  <div class="w-full bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mb-6">
+  <div class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mb-6">
     <a href="#">
-        <img class="rounded-t-lg" src={props.recipe.image_url} alt="" />
+        <img class="rounded-t-lg recipe-image" src={props.recipe.image_url} alt="" />
     </a>
     <div class="p-5">
         <a href="#">
@@ -27,13 +27,13 @@ const RecipeDetails = props => (
           <dd>{props.recipe.cook_time}</dd>
         </dl>
 
-        {props.recipe.ingredients.length > 0 && (
+        {props.recipe.recipe_ingredient_assignments.length > 0 && (
           <>
             <h5 className="mb-2 pl-2">Ingredients:</h5>
             <ul className="list-disc dark:text-gray-400 pl-6">
-              {props.recipe.ingredients.map(ingr => {
+              {props.recipe.recipe_ingredient_assignments.map(ingr => {
                 return (
-                  <li>{ingr.name}</li>
+                  <li>{ingr.original_row}</li>
                 )
               })}
             </ul>

@@ -3,7 +3,6 @@
 class RecipesParser
   UNIT_REGEX = /(cup|teaspoon|package|pound|tablespoon|pinch)/
   QUANTITY_REGEX = /^[0-9\.]+/
-
   VULGAR_TO_FLOAT = {
     "\u00BC" => 1.0 / 4.0,
     "\u00BD" => 1.0 / 2.0,
@@ -76,12 +75,17 @@ class RecipesParser
         main_part_ingredient_row.gsub(/\d+/,'').strip
       end
 
-      puts ingredient_name
-
       ingr = Ingredient.find_or_initialize_by(name: ingredient_name)
       ingr.save! unless ingr.persisted?
-      attrs = { ingr_id: ingr.id, unit: unit, quantity: quantity, mauled_row: main_part_ingredient_row, original_row: ingredient_row }
-      puts attrs
+
+      attrs = {
+        ingr_id: ingr.id,
+        unit: unit,
+        quantity: quantity,
+        mauled_row: main_part_ingredient_row,
+        original_row: ingredient_row
+      }
+
       ingredients.add(attrs)
     end
 
