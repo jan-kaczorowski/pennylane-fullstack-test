@@ -20,7 +20,7 @@ class RecipesFetcher
     Recipe.joins("INNER JOIN (#{results_sql}) AS results ON recipes.id = results.id")
           .includes(:recipe_ingredient_assignments, :ingredients)
           .select(*FIELDS)
-          .order(ratings: :desc)
+          .order(relevance: :desc)
           .as_json(include: :recipe_ingredient_assignments)
   end
 
