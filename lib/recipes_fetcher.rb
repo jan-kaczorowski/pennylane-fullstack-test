@@ -47,14 +47,14 @@ class RecipesFetcher
           SELECT
             r.id,
             (
-              select array_agg(e)
+              SELECT array_agg(e)
                 from (
-                    select unnest(ARRAY [#{ingredient_ids.join(',')}]::bigint[] )
-                    intersect
-                    select unnest(array_agg(ria.ingredient_id))
-                ) as dt(e)
-            ) as intersecting_ids,
-            ARRAY [#{ingredient_ids.join(',')}]::bigint[] as searched_for_ids,
+                    SELECT UNNEST(ARRAY [#{ingredient_ids.join(',')}]::bigint[] )
+                    INTERSECT
+                    SELECT UNNEST(array_agg(ria.ingredient_id))
+                ) AS dt(e)
+            ) AS intersecting_ids,
+            ARRAY [#{ingredient_ids.join(',')}]::bigint[] AS searched_for_ids,
             array_agg(ria.ingredient_id) AS ingredient_ids
           FROM recipes r LEFT JOIN recipe_ingredient_assignments ria ON ria.recipe_id = r.id
           GROUP BY r.id
