@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### User story
 
-Things you may want to cover:
+- user puts ingredients they have at home to the input
+- gets a list of recipes
+- can click on the recipe of his choosing for details
+- recipes are sorted by order of relevance (number of ingredients matching recipe)
 
-* Ruby version
 
-* System dependencies
+### ERD Diagram
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[ERD diagram](erd.pdf)
