@@ -1,5 +1,8 @@
 # README
 
+### Running website
+https://pennylane-fullstack-test-34.herokuapp.com/
+
 ### User story
 
 - user puts ingredients they have at home to the input
@@ -12,6 +15,7 @@
 
 - Ingredients to be selected by means of typeahead search
 - User to pass information not only of ingredients but also about their quantities (3 eggs, 1 kg sugar) and the system calculating accordingly
+- better cleanup/parsing/structurizing of seed data (lib/recipes_parser.rb)
 
 
 ### ERD Diagram
