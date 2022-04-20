@@ -1,5 +1,8 @@
 # README
 
+### Original requirements
+[requirements](https://gist.github.com/quentindemetz/2096248a1e8d362e669350700e1e6add)
+
 ### Running website
 https://pennylane-fullstack-test-34.herokuapp.com/
 
